@@ -4,8 +4,8 @@ class Sky {
             X_AXIS = 2;
   
   Sky() {
-    sky = #AAF7E1;
-    horizon = #D3F7AA;
+    sky = #B9F7D5;
+    horizon = #FCED42;
   }
   
   void draw() {
@@ -22,8 +22,7 @@ class Sky {
         stroke(c);
         line(x, i, x+w, i);
       }
-    }  
-    else if (axis == X_AXIS) {  // Left to right gradient
+    } else if (axis == X_AXIS) {  // Left to right gradient
       for (int i = x; i <= x+w; i++) {
         float inter = map(i, x, x+w, 0, 1);
         color c = lerpColor(c1, c2, inter);

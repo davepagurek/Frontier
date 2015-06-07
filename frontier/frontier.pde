@@ -1,7 +1,5 @@
-
-
 void setup() {
-  size(640, 360);
+  size(900, 500);
   drawScene();
 }
 
@@ -13,9 +11,14 @@ void mousePressed() {
 }
 
 void drawScene() {
+  background(255);
+  
   Sky sky = new Sky();
   sky.draw();
   
-  Tree tree = new Tree(width/2, height, width/2, height*0.75);
-  tree.draw();
+  Mountains mountains = new Mountains(height*0.2, height*0.7, #D36F6F, #AD1515);
+  mountains.draw();
+  
+  //Tree tree = new Tree(width/2, height, width/2, height*0.75);
+  //tree.draw();
 }
