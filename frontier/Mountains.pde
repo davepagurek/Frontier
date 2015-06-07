@@ -39,9 +39,10 @@ class MountainRange {
     trees = new ArrayList<Tree>();
     
     float noiseElevation = random(1, 100);
+    float spikiness = random(20, 50);
     
     for (int x = 0; x < 80; x++) {
-      elevation.add(map(noise(float(x)/50, noiseElevation), 0, 1, -1, 1) * spread);
+      elevation.add(map(noise(float(x)/spikiness, noiseElevation), 0, 1, -1, 1) * spread);
     }
     
     int numTrees = int(random(1, map(1.0/foreground, 1, 100, 5, 40)));
