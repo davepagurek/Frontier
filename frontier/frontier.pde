@@ -16,9 +16,12 @@ void drawScene() {
   Sky sky = new Sky();
   sky.draw();
   
-  Mountains mountains = new Mountains(height*0.2, height*0.7, #D36F6F, #AD1515);
+  //Mountains mountains = new Mountains(height*0.2, height*0.7, #D36F6F, #AD1515);
+  color start = lerpColor(#F7ABA2, #A2F1F7, random(0, 1));
+  color end = lerpColor(#F53E6F, #1B0BB4, random(0, 1));
+  Mountains mountains = new Mountains(height*0.2, height*0.7, start, end);
   mountains.draw();
   
-  //Tree tree = new Tree(width/2, height, width/2, height*0.75);
-  //tree.draw();
+  //Building building = new Building(width/2, height, width/3, height/2);
+  //building.draw();
 }
