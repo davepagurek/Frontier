@@ -2,8 +2,8 @@
 Procedural landscape generation in Processing
 
 ## Screenshots
-Landscape:
-<img src="https://github.com/pahgawk/Frontier/blob/master/img/landscape.png?raw=true">
+Landscape in the day:
+<img src="https://github.com/pahgawk/Frontier/blob/master/img/buildings-day.png?raw=true">
 
-Tree:
-<img src="https://github.com/pahgawk/Frontier/blob/master/img/tree.png?raw=true">
+Landscape at night:
+<img src="https://github.com/pahgawk/Frontier/blob/master/img/buildings-night.png?raw=true">
