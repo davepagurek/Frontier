@@ -53,7 +53,7 @@ class MountainRange {
     buildings = new ArrayList<Building>();
     
     float noiseElevation = random(1, 100);
-    float spikiness = random(30, 80);
+    float spikiness = random(40, 90);
     
     for (int x = 0; x < 150; x++) {
       elevation.add(map(noise(float(x)/spikiness, noiseElevation), 0, 1, -1, 1) * spread);
