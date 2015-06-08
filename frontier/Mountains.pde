@@ -66,7 +66,8 @@ class MountainRange {
         (float(location)/(elevation.size()-1))*width,
         rangeY + elevation.get(location),
         foreground*100,
-        foreground*80
+        foreground*80,
+        time
       ));
     }
     

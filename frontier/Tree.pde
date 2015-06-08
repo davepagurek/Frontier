@@ -7,8 +7,8 @@ final int BRANCH_ROOT = 0,
 class Tree {
   Branch root;
   
-  Tree(float x, float y, float w, float h) {
-    root = new Branch(x, y, w, h, BRANCH_ROOT, 1);
+  Tree(float x, float y, float w, float h, float time) {
+    root = new Branch(x, y, w, h, BRANCH_ROOT, 1, time);
   }
   
   void draw() {
@@ -21,11 +21,14 @@ class Branch {
   float segmentX = 0, segmentY = 0;
   float leafWidth = 0, leafHeight = 0;
   float rootX = 0, rootY = 0;
+  float time;
   ArrayList<Branch> branches;
   
-  Branch(float x, float y, float w, float h, int side, int level) {
+  Branch(float x, float y, float w, float h, int side, int level, float t) {
     rootX = x;
     rootY = y;
+    
+    time = t;
     
     branches = new ArrayList<Branch>();
     
@@ -49,7 +52,7 @@ class Branch {
           float branchY = random(segmentY, y);
           float branchX = x + ((segmentX - x)/(segmentY - y)) * (branchY - y);
           int branchDir = random(10) > 5 ? BRANCH_LEFT : BRANCH_RIGHT;
-          branches.add(new Branch(branchX, branchY, w*0.6, h*0.5, branchDir, level+1));
+          branches.add(new Branch(branchX, branchY, w*0.6, h*0.5, branchDir, level+1, time));
         }
       }
     }
@@ -57,7 +60,13 @@ class Branch {
   
   void drawLeaves() {
     noStroke();
-    fill(#F2B7B5);
+    color leafColor;
+    if (time < 0.5) {
+      leafColor = lerpColor(#FFD1D1, #F2C975, map(time, 0, 0.5, 0, 1));
+    } else {
+      leafColor = lerpColor(#D5BCE0, #56627C, map(time, 0.5, 1, 0, 1));
+    }
+    fill(leafColor);
     ellipse(segmentX, segmentY, leafWidth, leafHeight);
     
     for (Branch b : branches) {
@@ -66,8 +75,15 @@ class Branch {
   }
   
   void drawBranches() {
+    color branchColor;
+    if (time < 0.5) {
+      branchColor = lerpColor(#79504E, #866A59, map(time, 0, 0.5, 0, 1));
+    } else {
+      branchColor = lerpColor(#635774, #635774, map(time, 0.5, 1, 0, 1));
+    }
+    
     strokeWeight((rootY - segmentY)/20);
-    stroke(#79504E);
+    stroke(branchColor);
     line(rootX, rootY, segmentX, segmentY);
     
     for (Branch b : branches) {
