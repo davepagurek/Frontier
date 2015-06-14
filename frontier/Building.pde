@@ -110,9 +110,22 @@ class BuildingUnit {
       b.draw();
     }
     
+    color stiltColor, roofColor, houseColor, windowDark;
+    if (time < 0.5) {
+      stiltColor = lerpColor(#776F7E, #4B433C, map(time, 0, 0.5, 0, 1));
+      houseColor = lerpColor(#AD9592, #BFABA9, map(time, 0, 0.5, 0, 1));
+      roofColor = lerpColor(#776F7E, #4B433C, map(time, 0, 0.5, 0, 1));
+      windowDark = lerpColor(#1B5E81, #383E5A, map(time, 0, 0.5, 0, 1));
+    } else {
+      stiltColor = lerpColor(#352B48, #1D263E, map(time, 0.5, 1, 0, 1));
+      houseColor = lerpColor(#C3B7D1, #8788A7, map(time, 0, 0.5, 0, 1));
+      roofColor = lerpColor(#776F7E, #4B433C, map(time, 0, 0.5, 0, 1));
+      windowDark = lerpColor(#644C6F, #3D435F, map(time, 0, 0.5, 0, 1));
+    }
+    
     if (stiltLength > 0) {
       strokeWeight(unitWidth/20);
-      stroke(#776F7E);
+      stroke(stiltColor);
       if (unitSide == BUILDING_TOP) {
         line(unitX - unitWidth*0.3, unitY, unitX - unitWidth*0.3, unitY - stiltLength);
         line(unitX + unitWidth*0.3, unitY, unitX + unitWidth*0.3, unitY - stiltLength);
@@ -126,7 +139,7 @@ class BuildingUnit {
     noStroke();
     
     //Main building
-    fill(unitLevel % 2 == 0 ? #AD9592 : #BFABA9);
+    fill(unitLevel % 2 == 1 ? houseColor : lerpColor(houseColor, #1C1443, 0.2));
     beginShape();
     vertex(unitX - unitWidth/2, unitY - stiltLength);
     vertex(unitX + unitWidth/2, unitY - stiltLength);
@@ -139,7 +152,7 @@ class BuildingUnit {
       if (time > 0.6 && random(1)>0.5) {
         fill(WINDOW_LIGHT);
       } else {
-        fill(WINDOW_DARK);
+        fill(windowDark);
       }
       if (alignment == BUILDING_LEFT) {
         rect(
