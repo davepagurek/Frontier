@@ -644,7 +644,10 @@ if (canvas.getContext) {
     }
     window.addEventListener("resize", throttle(function() { redrawCanvas() }, 200));
     container.addEventListener("click", transition);
-    redrawCanvas(true);
+    setTimeout(function() {
+        redrawCanvas(true);
+        overlay.classList.add("transparent");
+    }, 200);
 } else {
     console.log("canvas not supported");
     document.getElementById("header").classList.add("static");
