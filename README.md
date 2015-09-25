@@ -1,5 +1,5 @@
 # Frontier
-Procedural landscape generation in Processing
+Procedural landscape generation in Processing. <a href="http://www.davepagurek.com/programming/frontier">Read about how it works</a>
 
 ## Screenshots
 Landscape in the day:
